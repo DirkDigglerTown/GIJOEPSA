@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GI Joe PSA Academy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 80s GI Joe vibe font -->
+  <link href="https://fonts.googleapis.com/css?family=Orbitron:900&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: url('Logo.jpg') center center no-repeat;
+      background-size: cover;
+      font-family: 'Orbitron', Arial, sans-serif;
+      min-height: 100vh;
+      color: #fff;
+      /* extra overlay for readability */
+    }
+    .overlay {
+      background: rgba(0,0,0,0.80);
+      min-height: 100vh;
+      width: 100vw;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+    .main-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 0 24px 0;
+    }
+    .intro {
+      background: rgba(0,0,0,0.65);
+      padding: 2em;
+      text-align: center;
+      margin-bottom: 2em;
+      border-radius: 16px;
+      border: 4px solid #0076c0;
+      box-shadow: 0 0 20px #0008;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .intro h1 {
+      font-size: 3em;
+      color: #ff0000;
+      margin: 0 0 0.3em 0;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 0 #fff, 4px 4px 0 #000;
+      font-family: 'Orbitron', Arial, sans-serif;
+    }
+    .intro p {
+      font-size: 1.3em;
+      color: #fff;
+      margin: 0;
+      text-shadow: 1px 1px 2px #000a;
+    }
+    .scroll-panel {
+      display: flex;
+      overflow-x: auto;
+      gap: 40px;
+      padding: 2em 0;
+      scroll-snap-type: x mandatory;
+      background: rgba(20,20,20,0.89);
+      border-radius: 16px;
+      margin: 0 2vw;
+      box-shadow: 0 0 20px #0008;
+    }
+    .video-container {
+      min-width: 480px;
+      flex: 0 0 480px;
+      scroll-snap-align: start;
+      background: #202040ee;
+      border-radius: 14px;
+      border: 3px solid #ff0000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1em;
+      box-shadow: 0 0 10px #000a;
+      transition: border-color 0.2s;
+    }
+    .video-container.active {
+      border-color: #00fffc;
+      box-shadow: 0 0 20px #00fffc55;
+    }
+    video {
+      width: 440px;
+      height: 250px;
+      border-radius: 12px;
+      border: 2px solid #fff;
+      background: #000;
+      outline: none;
+    }
+    .caption {
+      font-size: 1.1em;
+      color: #00ccff;
+      margin-top: 1em;
+      text-align: center;
+      text-shadow: 1px 1px 2px #000a;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    /* 80s pixel frame effect */
+    .pixel-border {
+      border: 8px solid #fff;
+      border-image: repeating-linear-gradient(
+        135deg,
+        #ff0000 0 16px,
+        #fff 16px 32px,
+        #0000ff 32px 48px,
+        #fff 48px 64px
+      ) 8;
+      border-radius: 20px;
+      box-shadow: 0 0 40px #0076c080;
+      padding: 12px;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 700px) {
+      .main-content { padding: 12px 0; }
+      .video-container, .scroll-panel {
+        min-width: 95vw;
+        flex: 0 0 95vw;
+      }
+      video {
+        width: 90vw;
+        height: 54vw;
+      }
+      .pixel-border {
+        padding: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="main-content">
+    <div class="pixel-border">
+      <div class="intro">
+        <h1>GI JOE PSA ACADEMY</h1>
+        <p>
+          Welcome to the world’s finest collection of bizarre life lessons from the 1980s—<b>GI Joe PSA Videos</b>!<br>
+          Relive the golden age of questionable advice, over-the-top acting, and the classic GI Joe spirit.<br>
+          <span style="color:#ffe600;font-weight:bold;">Scroll sideways to learn from the legends—because knowing is half the battle!</span><br><br>
+          <span style="font-size:0.85em; color:#00ccff;">
+            (Audio is ON—don't say you weren't warned!)
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="scroll-panel" id="scrollPanel">
+      <!-- Each video goes here -->
+      <div class="video-container">
+        <video src="Body Massage.mp4" controls muted playsinline></video>
+        <div class="caption">Body Massage</div>
+      </div>
+      <div class="video-container">
+        <video src="Carnival.mp4" controls muted playsinline></video>
+        <div class="caption">Carnival</div>
+      </div>
+      <div class="video-container">
+        <video src="Firesleeve.mp4" controls muted playsinline></video>
+        <div class="caption">Firesleeve</div>
+      </div>
+      <div class="video-container">
+        <video src="Helpcomputer.mp4" controls muted playsinline></video>
+        <div class="caption">Help Computer</div>
+      </div>
+      <div class="video-container">
+        <video src="MrLaFitte.mp4" controls muted playsinline></video>
+        <div class="caption">Mr. LaFitte</div>
+      </div>
+      <div class="video-container">
+        <video src="Nosebleed.mp4" controls muted playsinline></video>
+        <div class="caption">Nosebleed</div>
+      </div>
+      <div class="video-container">
+        <video src="Pimp.mp4" controls muted playsinline></video>
+        <div class="caption">Pimp</div>
+      </div>
+      <div class="video-container">
+        <video src="Porkchopsandwiches.mp4" controls muted playsinline></video>
+        <div class="caption">Porkchop Sandwiches</div>
+      </div>
+      <div class="video-container">
+        <video src="Reggae.mp4" controls muted playsinline></video>
+        <div class="caption">Reggae</div>
+      </div>
+      <div class="video-container">
+        <video src="skier.mp4" controls muted playsinline></video>
+        <div class="caption">Skier</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Detect which video is in the center and play only that, others pause & mute
+    function getCenterVideo() {
+      const panel = document.getElementById('scrollPanel');
+      const vids = panel.querySelectorAll('video');
+      let minDist = Infinity;
+      let activeIdx = 0;
+      vids.forEach((vid, i) => {
+        const rect = vid.parentElement.getBoundingClientRect();
+        const panelRect = panel.getBoundingClientRect();
+        const vidCenter = rect.left + rect.width/2;
+        const panelCenter = window.innerWidth/2;
+        const dist = Math.abs(panelCenter - vidCenter);
+        if (dist < minDist) {
+          minDist = dist;
+          activeIdx = i;
+        }
+      });
+      return activeIdx;
+    }
+
+    function updateVideos() {
+      const panel = document.getElementById('scrollPanel');
+      const vids = panel.querySelectorAll('video');
+      const containers = panel.querySelectorAll('.video-container');
+      const centerIdx = getCenterVideo();
+      vids.forEach((vid, i) => {
+        if (i === centerIdx) {
+          vid.play();
+          vid.muted = false;
+          containers[i].classList.add('active');
+        } else {
+          vid.pause();
+          vid.muted = true;
+          containers[i].classList.remove('active');
+        }
+      });
+    }
+
+    // Initial setup and event listeners
+    window.addEventListener('DOMContentLoaded', () => {
+      // Only allow one video to play at a time, based on scroll position
+      updateVideos();
+      document.getElementById('scrollPanel').addEventListener('scroll', () => {
+        updateVideos();
+      }, { passive: true });
+
+      // Also update on resize
+      window.addEventListener('resize', () => {
+        updateVideos();
+      });
+
+      // Also update after initial layout for slow loads
+      setTimeout(() => updateVideos(), 400);
+    });
+  </script>
+</body>
+</html>
