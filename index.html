@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GI JOE PSA’s</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Orbitron:900&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Orbitron', Arial, sans-serif;
+      background: #000;
+      overflow: hidden;
+    }
+    body {
+      width: 100vw;
+      height: 100vh;
+    }
+    .splash {
+      position: fixed;
+      z-index: 10;
+      width: 100vw;
+      height: 100vh;
+      top: 0; left: 0;
+      background: url('Logo.jpg') center center no-repeat;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.7s;
+    }
+    .gi-title {
+      color: #ffe600;
+      font-size: 4vw;
+      font-family: 'Orbitron', Arial, sans-serif;
+      font-weight: 900;
+      letter-spacing: 4px;
+      text-shadow: 0 4px 0 #0076c0, 2px 2px 8px #000a, 0 0 30px #fff;
+      margin-bottom: 3vh;
+      background: rgba(0,0,0,0.3);
+      padding: 1vh 2vw;
+      border-radius: 1em;
+      border: 4px solid #ff1919;
+      max-width: 85vw;
+      text-align: center;
+      user-select: none;
+    }
+    .enter-btn {
+      font-size: 2.5em;
+      padding: 0.5em 2em;
+      background: #2dfffd;
+      color: #000;
+      border: 6px solid #ff1919;
+      border-radius: 1em;
+      box-shadow: 0 0 18px #00ffff88, 0 4px 0 #222;
+      text-transform: uppercase;
+      font-family: 'Orbitron', Arial, sans-serif;
+      letter-spacing: 3px;
+      cursor: pointer;
+      font-weight: 900;
+      transition: 0.1s;
+      outline: none;
+      margin-top: 2vh;
+      user-select: none;
+    }
+    .enter-btn:active {
+      box-shadow: 0 0 7px #00fffdaa, 0 1px 0 #222;
+      top: 2px;
+    }
+    .enter-btn:hover {
+      background: #ffe600;
+      color: #ff1919;
+      border-color: #2dfffd;
+    }
+
+    .main-content {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: url('Logo.jpg') center center no-repeat;
+      background-size: cover;
+      overflow: hidden;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.72);
+      z-index: 1;
+    }
+    .video-section {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      z-index: 2;
+      width: 100vw;
+      flex-direction: column;
+    }
+    .video-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100vw;
+      max-width: 96vw;
+      height: 70vh;
+      margin-top: 3vh;
+      margin-bottom: 1vh;
+      position: relative;
+      z-index: 3;
+    }
+    .arrow-btn {
+      background: #ffe600;
+      color: #ff1919;
+      font-size: 3.2em;
+      border: 6px solid #2dfffd;
+      border-radius: 50%;
+      width: 1.1em;
+      height: 1.1em;
+      min-width: 70px;
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-family: 'Orbitron', Arial, sans-serif;
+      font-weight: bold;
+      box-shadow: 0 0 18px #00ffff99;
+      margin: 0 1vw;
+      outline: none;
+      user-select: none;
+      transition: background 0.15s, color 0.1s, border 0.15s;
+    }
+    .arrow-btn:active {
+      background: #2dfffd;
+      color: #0076c0;
+      border-color: #ffe600;
+    }
+    .arrow-btn:disabled {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    .video-box {
+      background: #202040ee;
+      border-radius: 22px;
+      box-shadow: 0 0 26px #000b, 0 0 20px #ffe60055;
+      padding: 1.4em 1em 1em 1em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 5px solid #ff1919;
+      max-width: 760px;
+      width: 80vw;
+    }
+    video {
+      width: 56vw;
+      max-width: 640px;
+      min-width: 220px;
+      height: 39vw;
+      max-height: 410px;
+      min-height: 135px;
+      border-radius: 16px;
+      border: 3px solid #fff;
+      background: #000;
+      outline: none;
+      margin-bottom: 12px;
+      box-shadow: 0 0 8px #222;
+      object-fit: contain;
+    }
+    .caption {
+      font-size: 2em;
+      color: #2dfffd;
+      text-align: center;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      text-shadow: 1px 1px 6px #000, 0 0 10px #ffe60055;
+      margin-top: 0.7em;
+      margin-bottom: 0.1em;
+      user-select: none;
+    }
+    @media (max-width: 900px) {
+      .gi-title { font-size: 7vw; }
+      .video-box { width: 95vw; max-width: 99vw; }
+      video { width: 86vw; height: 48vw; }
+      .caption { font-size: 1.2em; }
+    }
+    @media (max-width: 600px) {
+      .gi-title { font-size: 10vw; padding: 1vh 2vw; }
+      .main-content { background-size: 120vw 100vh; }
+      .video-section { margin-top: 2vh; }
+      .video-box { border-width: 3px; padding: 0.6em 0.2em; }
+      video { min-width: 85vw; max-width: 97vw; height: 54vw; min-height: 80px; }
+      .arrow-btn { font-size: 2.1em; min-width: 48px; min-height: 48px; }
+      .caption { font-size: 1em; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Splash Screen -->
+  <div class="splash" id="splashScreen">
+    <div class="gi-title">GI JOE PSA’s</div>
+    <button class="enter-btn" id="enterBtn">Enter</button>
+  </div>
+
+  <!-- Main Content (hidden at first) -->
+  <div class="main-content" id="mainContent">
+    <div class="overlay"></div>
+    <div class="video-section">
+      <div class="video-wrapper">
+        <button class="arrow-btn" id="leftArrow">&#8592;</button>
+        <div class="video-box">
+          <video id="psaVideo" src="" controls playsinline></video>
+          <div class="caption" id="psaCaption"></div>
+        </div>
+        <button class="arrow-btn" id="rightArrow">&#8594;</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    // PSA video list
+    const psas = [
+      { src: "Body Massage.mp4", caption: "Body Massage" },
+      { src: "Carnival.mp4", caption: "Carnival" },
+      { src: "Firesleeve.mp4", caption: "Firesleeve" },
+      { src: "Helpcomputer.mp4", caption: "Help Computer" },
+      { src: "MrLaFitte.mp4", caption: "Mr. LaFitte" },
+      { src: "Nosebleed.mp4", caption: "Nosebleed" },
+      { src: "Pimp.mp4", caption: "Pimp" },
+      { src: "Porkchopsandwiches.mp4", caption: "Porkchop Sandwiches" },
+      { src: "Reggae.mp4", caption: "Reggae" },
+      { src: "skier.mp4", caption: "Skier" }
+    ];
+    let current = 0;
+
+    // Elements
+    const splash = document.getElementById('splashScreen');
+    const enterBtn = document.getElementById('enterBtn');
+    const mainContent = document.getElementById('mainContent');
+    const leftArrow = document.getElementById('leftArrow');
+    const rightArrow = document.getElementById('rightArrow');
+    const videoElem = document.getElementById('psaVideo');
+    const captionElem = document.getElementById('psaCaption');
+
+    // Show current PSA video
+    function showPSA(idx) {
+      current = idx;
+      videoElem.src = psas[idx].src;
+      captionElem.textContent = psas[idx].caption;
+      setTimeout(() => {
+        videoElem.play();
+        videoElem.muted = false;
+      }, 200);
+      leftArrow.disabled = (idx === 0);
+      rightArrow.disabled = (idx === psas.length - 1);
+    }
+
+    // Arrows functionality
+    leftArrow.onclick = () => {
+      if (current > 0) {
+        showPSA(current - 1);
+      }
+    };
+    rightArrow.onclick = () => {
+      if (current < psas.length - 1) {
+        showPSA(current + 1);
+      }
+    };
+
+    // Enter site
+    enterBtn.onclick = () => {
+      splash.style.opacity = 0;
+      setTimeout(() => {
+        splash.style.display = "none";
+        mainContent.style.display = "flex";
+        showPSA(0);
+      }, 700);
+    };
+
+    // Keyboard nav (for desktop)
+    document.addEventListener('keydown', e => {
+      if (mainContent.style.display === 'flex') {
+        if ((e.key === "ArrowLeft" || e.key === "a") && current > 0) {
+          showPSA(current - 1);
+        }
+        if ((e.key === "ArrowRight" || e.key === "d") && current < psas.length - 1) {
+          showPSA(current + 1);
+        }
+      }
+    });
+
+    // On load, pause the video
+    videoElem.addEventListener('loadeddata', () => {
+      videoElem.currentTime = 0;
+      videoElem.play();
+    });
+    // On mobile, focus video after navigation
+    rightArrow.addEventListener('click', () => { videoElem.focus(); });
+    leftArrow.addEventListener('click', () => { videoElem.focus(); });
+
+    // Resize: keep video big
+    window.addEventListener('resize', () => {
+      // nothing needed here unless you want to tweak layout more for mobile/tablet
+    });
+  </script>
+</body>
+</html>
